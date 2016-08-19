@@ -10,11 +10,11 @@ class Light
   end
 
   def on
-    RPi::GPIO.set_high PIN
+    RPi::GPIO.set_low PIN
   end
   
   def off
-    RPi::GPIO.set_low PIN
+    RPi::GPIO.set_high PIN
   end
 
   def self.on
