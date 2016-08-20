@@ -8,9 +8,11 @@ module RPi
 		end
 
 		def self.set_low(pin)
+			puts "LOW"
 		end
 
 		def self.set_high(pin)
+			puts "HIGH"
 		end
 
 	end

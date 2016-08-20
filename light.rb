@@ -1,4 +1,3 @@
-require 'rpi_gpio'
 require './solareventcalculator.rb'
 if `hostname`.strip == 'Toons-MacBook-Pro.local'
   require './fake_rpi_gpio'
@@ -20,6 +19,8 @@ class Light
     RPi::GPIO.setup PIN, :as => :output
 
     @auto_off_time = Time.now.end_of_day
+    @auto_on_time = sunset
+
   end
 
   def on
@@ -46,8 +47,15 @@ class Light
   def sunrise
     solar_events = SolarEventCalculator.new(Date.today, 51.0523800,4.8806800) #for Herselt
     solar_events.compute_utc_civil_sunrise.to_time
+  end
 
   def auto
     light = Light.new
+    time = Time.now
+    if time < light.auto_off_time && time > light.auto_on_time
+      light.on
+    else
+      light.off
+    end
   end
 end

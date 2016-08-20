@@ -21,8 +21,9 @@ class LightsOutApp < Sinatra::Base
   end
 
   get '/auto' do
-    Light.auto
-    haml :auto
+    light = Light.new
+    light.auto
+    haml :auto, locals: {light: light}
   end
 
 end
