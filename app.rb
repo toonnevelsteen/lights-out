@@ -10,14 +10,19 @@ class LightsOutApp < Sinatra::Base
 
   get '/on' do
     Light.on
-    #haml :on  
+    #haml :on
     redirect '/'
   end
 
   get '/out' do
     Light.off
-    #haml :out  
+    #haml :out
     redirect '/'
+  end
+
+  get '/auto' do
+    Light.auto
+    haml :auto
   end
 
 end

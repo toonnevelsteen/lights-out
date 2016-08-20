@@ -2,6 +2,10 @@ source "https://rubygems.org"
 
 gem 'sinatra'
 gem 'haml'
-gem 'rpi_gpio'
 gem 'tzinfo'
 
+unless "Toons-MacBook-Pro.local" == `hostname`.strip!
+  gem "rpi_gpio"
+end
+
+gem "activesupport"
