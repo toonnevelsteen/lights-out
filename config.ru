@@ -1,2 +1,6 @@
 require "./app"
-run LightsOutApp
+
+require 'sidekiq/web'
+
+run Rack::URLMap.new('/' => LightsOutApp, '/sidekiq' => Sidekiq::Web)
+

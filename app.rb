@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'haml'
 require './light'
+require './workers/lights_worker'
 
 class LightsOutApp < Sinatra::Base
 
@@ -10,21 +11,23 @@ class LightsOutApp < Sinatra::Base
 
   get '/on' do
     Light.on
-    #haml :on
     redirect '/'
   end
 
   get '/out' do
     Light.off
-    #haml :out
     redirect '/'
   end
 
   get '/auto' do
     light = Light.new
-    light.auto
+    puts "Scheduling ..."
+    Sidekiq::ScheduledSet.new.clear
+    LightsOnWorker.perform_at(light.auto_on_time)
+    LightsOutWorker.perform_at(light.auto_off_time)
     haml :auto, locals: {light: light}
   end
 
 end
+
 

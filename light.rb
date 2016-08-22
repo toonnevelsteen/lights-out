@@ -51,6 +51,7 @@ class Light
 
   def auto
     light = Light.new
+
     time = Time.now
     if time < light.auto_off_time && time > light.auto_on_time
       light.on

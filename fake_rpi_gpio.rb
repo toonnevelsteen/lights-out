@@ -8,11 +8,11 @@ module RPi
 		end
 
 		def self.set_low(pin)
-			puts "LOW"
+			puts "FAKE LIGHTS ON"
 		end
 
 		def self.set_high(pin)
-			puts "HIGH"
+			puts "FAKE LIGHTS OFF"
 		end
 
 	end
