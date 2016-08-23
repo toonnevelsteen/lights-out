@@ -19,7 +19,7 @@ class Light
     RPi::GPIO.setup PIN, :as => :output
 
     @auto_off_time = Time.now.end_of_day
-    @auto_on_time = sunset
+    @auto_on_time = sunset - 15.minutes
 
   end
 
