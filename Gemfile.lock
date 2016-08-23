@@ -16,6 +16,7 @@ GEM
     rack-protection (1.5.3)
       rack
     redis (3.3.1)
+    rpi_gpio (0.3.0)
     sidekiq (4.1.4)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -36,6 +37,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   haml
+  rpi_gpio
   sidekiq
   sinatra
   tzinfo
