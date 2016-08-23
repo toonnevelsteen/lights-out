@@ -5,6 +5,10 @@ require './workers/lights_worker'
 
 class LightsOutApp < Sinatra::Base
 
+  use Rack::Auth::Basic, "Restricted Area" do |username, password|
+    username == ENV['USERNAME'] and password == ENV['USER_PASSWORD']
+  end
+
   get '/' do
     haml :index
   end
