@@ -32,6 +32,14 @@ class LightsOutApp < Sinatra::Base
     haml :auto, locals: {light: light}
   end
 
+  get '/info' do
+    light = Light.new
+    "{
+      'auto_off_time': #{light.auto_off_time},
+      'auto_on_time': #{light.auto_on_time}
+    }"
+  end
+
 end
 
 
