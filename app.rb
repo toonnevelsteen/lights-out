@@ -35,9 +35,9 @@ class LightsOutApp < Sinatra::Base
   get '/info' do
     light = Light.new
     "{
-      'auto_off_time': #{light.auto_off_time},
-      'auto_on_time': #{light.auto_on_time}
-    }"
+      \"auto_off_time\": \"#{light.auto_off_time}\",
+      \"auto_on_time\": \"#{light.auto_on_time}\"
+      }"
   end
 
 end
